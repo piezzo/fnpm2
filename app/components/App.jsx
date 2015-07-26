@@ -11,14 +11,7 @@ var $ = require('jQuery');
 
 
 var Fnpm = React.createClass({
-  render: function() {
-    return (
-      <div className="fnmp">
-        <h1>fnpm peer viewer</h1>
-        <Peers peers={this.state.data}/>
-      </div>
-    );
-  },
+
   getInitialState: function() {
     return {data: []};
   },
@@ -39,6 +32,14 @@ var Fnpm = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
+  },
+  render: function() {
+    return (
+      <div className="fnmp">
+        <h1>fnpm peer viewer</h1>
+        <Peers peers={this.state.data}/>
+      </div>
+    );
   },
 });
 React.render(<Fnpm url="http://localhost:3000/getpeerinfo" pollInterval={5000} />, document.body);

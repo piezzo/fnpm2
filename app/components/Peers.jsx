@@ -1,12 +1,20 @@
 import React from 'react';
+import Node from './Node';
 
 export default class Peers extends React.Component {
   render() {
     // console.log(this.props);
-    // var data = this.props.data;
+    if (this.props.peers.data) {
+    var nodes = this.props.peers.data.map(function (node) {
+      return (
+        <Node data={node}>
+          {node.addr}
+        </Node>
+      );
+    })};
     return(
-     <div>connected to this many IPs: {this.props.peers.data.length}</div>
-
-   );
-  }
-}
+      <div className="Nodes">
+        {nodes}
+      </div>
+    );
+  }}
