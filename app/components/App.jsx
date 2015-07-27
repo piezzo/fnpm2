@@ -1,8 +1,8 @@
 import React from 'react';
 import Peers from './Peers';
-import JQuery from 'jQuery';
+import JQuery from 'jquery';
 
-var $ = require('jQuery');
+var $ = require('jquery');
 
 
 
@@ -42,4 +42,4 @@ var Fnpm = React.createClass({
     );
   },
 });
-React.render(<Fnpm url="http://localhost:3000/getpeerinfo" pollInterval={5000} />, document.body);
+React.render(<Fnpm url="/getpeerinfo" pollInterval={5000} />, document.body);
