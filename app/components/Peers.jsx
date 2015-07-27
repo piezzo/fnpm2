@@ -1,5 +1,6 @@
 import React from 'react';
 import Node from './Node';
+import PeersSummary from './PeersSummary';
 
 export default class Peers extends React.Component {
   render() {
@@ -12,9 +13,11 @@ export default class Peers extends React.Component {
         </Node>
       );
     })};
-    return(
+    return(<div className="Peers">
+      <PeersSummary data={this.props.peers.data} />
       <div className="Nodes">
         {nodes}
+      </div>
       </div>
     );
   }}
