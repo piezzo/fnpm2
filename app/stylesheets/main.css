@@ -1,3 +1,10 @@
 body {
   /*background: cornsilk;*/
 }
+
+.ipv6 {
+    color: orange;
+}
+.localNet {
+    color: blue;
+}

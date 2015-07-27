@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var config = require('config');
-var serverType = config.get('serverType');
+// var serverType = config.get('serverType');
+var serverType = 'bitcoind';
 var rpcConfig = config.get('rpcConfig');
 var colors = config.get('colors');
 
