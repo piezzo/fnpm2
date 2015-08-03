@@ -5,11 +5,6 @@ import JQuery from 'jquery';
 var $ = require('jquery');
 
 
-
-// tutorial2.js
-// tutorial5.js
-
-
 var Fnpm = React.createClass({
 
   getInitialState: function() {
@@ -42,4 +37,4 @@ var Fnpm = React.createClass({
     );
   },
 });
-React.render(<Fnpm url="/getpeerinfo" pollInterval={5000} />, document.body);
+React.render(<Fnpm url="http://shuttle:3000/getpeerinfo" pollInterval={5000} />, document.body);
