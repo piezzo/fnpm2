@@ -14,7 +14,7 @@ export default class Chart extends React.Component {
       //Number - The width of each segment stroke
       segmentStrokeWidth : 2,
       //Number - The percentage of the chart that we cut out of the middle
-      percentageInnerCutout : 60, // This is 0 for Pie charts
+      percentageInnerCutout : this.props.ringSize, // This is 0 for Pie charts
       //Number - Amount of animation steps
       animationSteps : 10,
       //String - Animation easing effect
@@ -25,8 +25,9 @@ export default class Chart extends React.Component {
       animateScale : false,
       //String - A legend template
       legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-
     };
+
+// console.log("ringSize:", (this.props.ringSize));
 
     return (
       <div className="Chart">

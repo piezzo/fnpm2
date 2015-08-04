@@ -12,7 +12,7 @@ export default class PeersSummary extends React.Component {
   } else {
     return(
       <div className="PeersSummaryDetails">
-        <h3>No data available yet.</h3>
+        <h3>No data available yet...</h3>
       </div>
     );
   }

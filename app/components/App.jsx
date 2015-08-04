@@ -20,7 +20,7 @@ var Fnpm = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(data) {
-        console.log("successful xmlhttprequest.");
+        // console.log("successful xmlhttprequest.");
         this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err) {
