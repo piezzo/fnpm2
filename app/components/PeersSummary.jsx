@@ -1,4 +1,5 @@
 import React from 'react';
+import Highlightable from 'react-highlightable';
 
 export default class PeersSummary extends React.Component {
   render() {
@@ -6,7 +7,7 @@ export default class PeersSummary extends React.Component {
     if (this.props.data) {
     return(
       <div className="PeersSummaryDetails">
-        <h3>Connected to {this.props.data.length} peers.</h3>
+        <h3>Connected to <Highlightable background={'yellow'}>{this.props.data.length}</Highlightable> peers.</h3>
       </div>
     );
   } else {

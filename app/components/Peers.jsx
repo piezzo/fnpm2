@@ -8,9 +8,9 @@ export default class Peers extends React.Component {
     var maxTransferred = self.props.peers.maxTransferred;
     // console.log(this.props);
     if (this.props.peers.data) {
-      var nodes = this.props.peers.data.map(function (node) {
+      var nodes = this.props.peers.data.map(function (node, i) {
         return (
-          <Node data={node} maxTransferred={maxTransferred}>
+          <Node key={'node' + i} data={node} maxTransferred={maxTransferred}>
             {node.addr}
           </Node>
         );

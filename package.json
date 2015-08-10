@@ -33,6 +33,7 @@
     "moment": "^2.10.5",
     "morgan": "^1.6.1",
     "react": "^0.13.3",
-    "react-chartjs": "^0.6.0"
+    "react-chartjs": "^0.6.0",
+    "react-highlightable": "0.0.2"
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import Chart from './Chart';
+import Highlightable from 'react-highlightable';
 
 export default class Node extends React.Component {
   render() {
@@ -33,10 +34,8 @@ export default class Node extends React.Component {
 
     return(
       <div className={classString}>
-        <li>
-          {this.props.data.subver}, sent: {(this.props.data.bytessent /1024 /1024).toFixed(2)} MB, received: {(this.props.data.bytesrecv /1024 /1024).toFixed(2)} MB, connected {moment(this.props.data.conntime * 1000).fromNow()}
+          {this.props.data.subver}, sent: <Highlightable background={'yellow'}>{(this.props.data.bytessent /1024 /1024).toFixed(2)}</Highlightable> MB, received: <Highlightable background={'yellow'}>{(this.props.data.bytesrecv /1024 /1024).toFixed(2)}</Highlightable> MB, connected {moment(this.props.data.conntime * 1000).fromNow()}
           <Chart data={trafficData} ringSize={ringSize}/>
-        </li>
       </div>
     );
   }}
