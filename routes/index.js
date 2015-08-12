@@ -5,6 +5,7 @@ var config = require('config');
 var serverType = 'bitcoind';
 var rpcConfig = config.get('rpcConfig');
 var colors = config.get('colors');
+var apicache = require('apicache').options({ debug: true }).middleware;
 
 
 
@@ -20,7 +21,7 @@ router.all('/', function(req, res, next) {
 
 
 
-router.get('/getpeerinfo', function(req, res, next) {
+router.get('/getpeerinfo', apicache('3 seconds'), function(req, res, next) {
 	switch (serverType) {
 		case 'btcd':
 			btcd.getpeerinfo(function(err, info, resHeaders) {

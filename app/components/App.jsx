@@ -18,7 +18,7 @@ var Fnpm = React.createClass({
     $.ajax({
       url: this.props.url,
       dataType: 'json',
-      cache: false,
+      cache: true,
       success: function(data) {
         // console.log("successful xmlhttprequest.");
         this.setState({data: data});
@@ -37,4 +37,4 @@ var Fnpm = React.createClass({
     );
   },
 });
-React.render(<Fnpm url="http://shuttle:3000/getpeerinfo" pollInterval={5000} />, document.body);
+React.render(<Fnpm url="/getpeerinfo" pollInterval={5000} />, document.body);

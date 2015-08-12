@@ -18,7 +18,7 @@ export default class Chart extends React.Component {
       //Number - Amount of animation steps
       animationSteps : 10,
       //String - Animation easing effect
-      animationEasing : "easeOutBounce",
+      animationEasing : "linear",
       //Boolean - Whether we animate the rotation of the Doughnut
       animateRotate : true,
       //Boolean - Whether we animate scaling the Doughnut from the centre
