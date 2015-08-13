@@ -8,13 +8,13 @@ export default class Node extends React.Component {
 
     var trafficData = [
       {
-        value: (this.props.data.bytessent / 1024 / 1024).toFixed(2),
+        value: Math.max((this.props.data.bytessent / 1024 / 1024).toFixed(2), 0.01),
         color:"#603C92",
         highlight: "#47207E",
         label: "MB sent"
       },
       {
-        value: (this.props.data.bytesrecv / 1024 / 1024).toFixed(2),
+        value: Math.max((this.props.data.bytesrecv / 1024 / 1024).toFixed(2), 0.01),
         color: "#F6D496",
         highlight: "#FFDB9A",
         label: "MB received"
@@ -34,7 +34,7 @@ export default class Node extends React.Component {
 
     return(
       <div className={classString}>
-          {this.props.data.subver}, sent: <Highlightable background={'yellow'}>{(this.props.data.bytessent /1024 /1024).toFixed(2)}</Highlightable> MB, received: <Highlightable background={'yellow'}>{(this.props.data.bytesrecv /1024 /1024).toFixed(2)}</Highlightable> MB, connected {moment(this.props.data.conntime * 1000).fromNow()}
+          {this.props.data.subver}, <b>{this.props.data.addr}</b>, {'\n'}sent: <Highlightable background={'yellow'}>{(this.props.data.bytessent /1024 /1024).toFixed(2)}</Highlightable> MB, received: <Highlightable background={'yellow'}>{(this.props.data.bytesrecv /1024 /1024).toFixed(2)}</Highlightable> MB, connected {moment(this.props.data.conntime * 1000).fromNow()}
           <Chart data={trafficData} ringSize={ringSize}/>
       </div>
     );
