@@ -16,7 +16,7 @@ export default class Peers extends React.Component {
         );
       })};
       return(<div className="Peers">
-      <PeersSummary data={this.props.peers.data}/>
+      <PeersSummary data={this.props.peers.data} nettotals={this.props.peers.nettotals} />
       <ul>
         <div className="Nodes">
           {nodes}

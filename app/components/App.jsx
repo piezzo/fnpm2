@@ -31,10 +31,10 @@ var Fnpm = React.createClass({
   render: function() {
     return (
       <div className="fnmp">
-        <h1>fnpm peer viewer</h1>
+        <h1>fnpm2 peer viewer</h1>
         <Peers peers={this.state.data}/>
       </div>
     );
   },
 });
-React.render(<Fnpm url="/getpeerinfo" pollInterval={5000} />, document.body);
+React.render(<Fnpm url="http://shuttle:3000/getpeerinfo" pollInterval={5000} />, document.body);
