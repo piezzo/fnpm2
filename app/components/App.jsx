@@ -37,4 +37,4 @@ var Fnpm = React.createClass({
     );
   },
 });
-React.render(<Fnpm url="http://shuttle:3000/getpeerinfo" pollInterval={5000} />, document.body);
+React.render(<Fnpm url="/getpeerinfo" pollInterval={5000} />, document.body);
