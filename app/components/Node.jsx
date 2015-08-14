@@ -31,6 +31,9 @@ export default class Node extends React.Component {
     if (this.props.data.addr.indexOf('192.168.') > -1) {
       classString += " localNet";
     }
+    if (this.props.data.addr.indexOf('.onion') > -1) {
+      classString += " onion";
+    }
 
     return(
       <div className={classString}>
