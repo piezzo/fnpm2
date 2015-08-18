@@ -1,10 +1,13 @@
 import React from 'react';
 import Highlightable from 'react-highlightable';
+import NetworkSpeeds from './NetworkSpeeds';
 
 export default class PeersSummary extends React.Component {
+  // let kbpsIn = 0;
+
   render() {
     // console.log(this.props);
-    if (this.props.data) {
+    if (this.props.data && this.props.nettotals) {
     return(
       <div className="PeersSummaryDetails rotate-left">
         <h3>fnpm2: Connected to
@@ -15,11 +18,14 @@ export default class PeersSummary extends React.Component {
           <Highlightable background={'yellow'}>{(this.props.nettotals.totalbytessent /1024 /1024 /1024).toFixed(2)}
           </Highlightable>GB
         </h3>
+        <NetworkSpeeds nettotals={this.props.nettotals} />
+
       </div>
+
     );
   } else {
     return(
-      <div className="PeersSummaryDetails rotate-left">
+      <div className="PeersSummaryDetails">
         <h3>fnmp2: No data available yet...</h3>
       </div>
     );
