@@ -5,7 +5,7 @@ fnpm is a very simple bitcoin full node monitor node written in nodejs and React
 
 This is a small side project, that is meant to teach me some React. Feel free to use it and extend it, but please don't expect it to run out of the box if you decide to clone the master-branch.
 
-If you're lucky, you might see a running version here: http://piezzo.no-ip.org:3000/ (initial load takes a while due tu crappy upstream-connection)
+If you're lucky, you might see a running version here: http://piezzo.no-ip.org:3000/ (initial load takes a while due to crappy upstream-connection)
 
 
 Quickstart
