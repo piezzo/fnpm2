@@ -18,7 +18,7 @@ export default class PeersSummary extends React.Component {
           <Highlightable background={'yellow'}>{(this.props.nettotals.totalbytessent /1024 /1024 /1024).toFixed(2)}
           </Highlightable>GB
         </h3>
-        <NetworkSpeeds nettotals={this.props.nettotals} />
+        <NetworkSpeeds nettotals={this.props.nettotals} peers={this.props.data} />
 
       </div>
 
