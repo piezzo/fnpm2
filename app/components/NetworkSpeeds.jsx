@@ -7,7 +7,14 @@ export default class NetworkSpeeds extends React.Component {
     if (this.state) {
     return(
         <div className="PeersSummarySpeeds">
-          Speeds: in: {this.state.kbpsIn.toFixed(2)}kbps out: {this.state.kbpsOut.toFixed(2)}kbps
+          <div>
+            Speeds: in: {this.state.kbpsIn.toFixed(2)} kbps out: {this.state.kbpsOut.toFixed(2)} kbps
+          </div>
+          <div>
+            onion: <span className="onion">{this.state.onionKbpsIn} / {this.state.onionKbpsOut}</span>,
+            ipv6: <span className="ipv6">{this.state.ipv6KbpsIn} / {this.state.ipv6KbpsOut}</span>,
+            ipv4: <span className="ipv4">{this.state.ipv4KbpsIn} / {this.state.ipv4KbpsOut}</span>
+          </div>
         </div>
     );
   } else {
