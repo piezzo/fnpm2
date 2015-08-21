@@ -24,5 +24,5 @@ export default class Peers extends React.Component {
       <PeersSummary data={this.props.peers.data} nettotals={this.props.peers.nettotals} />
     </div>
   );
-}}
-//
+}
+}

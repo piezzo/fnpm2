@@ -31,7 +31,7 @@ export default class Chart extends React.Component {
 
     return (
       <div className="Chart">
-        <PieChart data={chartData} options={chartOptions}/>
+        <PieChart data={chartData} options={chartOptions} width="175" height="175"/>
       </div>
     );
   }

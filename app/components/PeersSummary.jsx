@@ -3,7 +3,6 @@ import Highlightable from 'react-highlightable';
 import NetworkSpeeds from './NetworkSpeeds';
 
 export default class PeersSummary extends React.Component {
-  // let kbpsIn = 0;
 
   render() {
     // console.log(this.props);

@@ -4,8 +4,30 @@ body {
   /*font-family: sans-serif;*/
   font-family: 'Roboto', sans-serif;
 }
-.mui-app-bar {
-  width: 10%;
+
+.container{
+  display: table;
+    /*overflow:auto;*/
+    border:1px;
+    width:25em;
+}
+.child{
+    display:table-cell;
+    height: 175;
+    /*height:20px;*/
+}
+
+.PeersSummaryDetails {
+position:fixed;
+bottom:0em;
+width:100%;
+background-color:lightgrey;
+border-radius:.2em;
+opacity: .6;
+color: black;
+}
+.Nodes {
+  padding-bottom: 5.5em;
 }
 
 .Node{
