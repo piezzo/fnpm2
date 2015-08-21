@@ -2,6 +2,10 @@ import React from 'react';
 import moment from 'moment';
 import Chart from './Chart';
 import Highlightable from 'react-highlightable';
+import mui from 'material-ui';
+  let ThemeManager = new mui.Styles.ThemeManager();
+  let RaisedButton = mui.RaisedButton;
+  let Paper = mui.Paper;
 
 export default class Node extends React.Component {
   render() {
@@ -37,8 +41,10 @@ export default class Node extends React.Component {
 
     return(
       <div className={classString}>
+        <Paper zDepth={1}>
           {this.props.data.subver}, <b>{this.props.data.addr}</b>, {'\n'}sent: <Highlightable background={'yellow'}>{(this.props.data.bytessent /1024 /1024).toFixed(2)}</Highlightable> MB, received: <Highlightable background={'yellow'}>{(this.props.data.bytesrecv /1024 /1024).toFixed(2)}</Highlightable> MB, connected {moment(this.props.data.conntime * 1000).fromNow()}
           <Chart data={trafficData} ringSize={ringSize}/>
+          </Paper>
       </div>
     );
   }}

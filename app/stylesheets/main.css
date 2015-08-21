@@ -1,49 +1,11 @@
 body {
   /*background: cornsilk;*/
-  padding-left: 5em;
-  font-family: sans-serif;
+  /*padding-left: 5em;*/
+  /*font-family: sans-serif;*/
+  font-family: 'Roboto', sans-serif;
 }
-
-.rotate-left {
-  position: fixed;
-  display: inline-block;
-  color: silver;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	width: 5em;
-	white-space: nowrap;
-	background: black;
-}
-
-.rotate-left h3 {
-  color: silver;
-  display: inline-block;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: .5em;
-  height: 2.5em;
-  margin: auto;
-  -webkit-transform-origin: 0 50%;
-     -moz-transform-origin: 0 50%;
-  -webkit-transform: rotate(-90deg) translate(-50%, 50%);
-     -moz-transform: rotate(-90deg) translate(-50%, 50%);
-}
-
-.PeersSummarySpeeds {
-  /*color: silver;*/
-  display: inline-block;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 2.25em;
-  height: 2.5em;
-  margin: auto;
-  -webkit-transform-origin: 0 50%;
-     -moz-transform-origin: 0 50%;
-  -webkit-transform: rotate(-90deg) translate(-50%, 50%);
-     -moz-transform: rotate(-90deg) translate(-50%, 50%);
+.mui-app-bar {
+  width: 10%;
 }
 
 .Node{
