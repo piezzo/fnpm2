@@ -9,9 +9,12 @@ import mui from 'material-ui';
   let Card = mui.Card;
   let CardHeader = mui.CardHeader;
   let CardText = mui.CardText;
+  let Avatar = mui.Avatar;
+
 
 
 export default class Node extends React.Component {
+
   render() {
 
     var trafficData = [
@@ -31,16 +34,35 @@ export default class Node extends React.Component {
 
     var ringSize = - Math.round(Math.min(0.25, (this.props.data.bytesrecv +this.props.data.bytessent) / this.props.maxTransferred) * 100) +95;
 
+    var subtitleString = this.props.data.subver;
+    var avatarColor = 'black'
+
+
+
     var classString = "Node";
     if (this.props.data.addr.indexOf('[') > -1) {
       classString += " ipv6";
+      subtitleString += " ipv6";
+      avatarColor = 'yellow';
     }
 
     if (this.props.data.addr.indexOf('192.168.') > -1) {
       classString += " localNet";
+      subtitleString += " local";
+      avatarColor = 'blue';
     }
     if ((this.props.data.addr.indexOf('.onion') > -1) || (this.props.data.addrlocal.indexOf('.onion') > -1)) {
       classString += " onion";
+      subtitleString += " onion";
+      avatarColor = 'red';
+    }
+    else {
+      classString += " ipv4";
+      subtitleString += " ipv4";
+    }
+
+    if (this.props.data.inbound) {
+      subtitleString += " inbound";
     }
 
     return(
@@ -48,7 +70,8 @@ export default class Node extends React.Component {
         <Card initiallyExpanded={false}>
           <CardHeader
             title={this.props.data.addr}
-            subtitle={this.props.data.subver}
+            subtitle={subtitleString}
+            avatar={<Avatar style={{color:{avatarColor}}}>A</Avatar>}
             showExpandableButton={true}>
           </CardHeader>
           <CardText expandable={true}>
