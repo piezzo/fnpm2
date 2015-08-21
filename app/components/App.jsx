@@ -46,9 +46,11 @@ var Fnpm = React.createClass({
   render: function() {
     return (
       <div className="fnmp">
+        <header>
         <AppBar
   title="fnpm2"
   iconClassNameRight="muidocs-icon-navigation-expand-more"/>
+</header>
         <Peers peers={this.state.data}/>
       </div>
     );
