@@ -12,8 +12,20 @@ import mui from 'material-ui';
   let Avatar = mui.Avatar;
 
 
+      // if (this.state) {
+      //   let kbpsIn = this.state.kbpsIn;
+      //   let kbpsOut = this.state.kbpsOut;
+      // } else {
+      //   let kbpsIn = 0;
+      //   let kbpsOut = 0;
+      // }
 
 export default class Node extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {kbpsIn: 0};
+    this.state = {kbpsOut: 0};
+  }
 
   render() {
 
@@ -37,14 +49,6 @@ export default class Node extends React.Component {
     var subtitleString = this.props.data.subver;
     var avatarColor = 'black';
     var avatarString = '--';
-
-    // if (this.state) {
-    //   let kbpsIn = this.state.kbpsIn;
-    //   let kbpsOut = this.state.kbpsOut;
-    // } else {
-    //   let kbpsIn = 0;
-    //   let kbpsOut = 0;
-    // }
 
     var classString = "Node";
     if (this.props.data.addr.indexOf('[') > -1) {
@@ -75,7 +79,8 @@ export default class Node extends React.Component {
       subtitleString += " inbound";
     }
 
-    // subtitleString += " " + kbpsIn + "/" + kbpsOut;
+    subtitleString += " " + this.state.kbpsIn + "/" + this.state.kbpsOut;
+    // subtitleString = "<div class=\'right\'>" + subtitleString+ "</div>";
 
     return(
       <div className={classString}>
@@ -95,11 +100,13 @@ export default class Node extends React.Component {
                     <span>received: <Highlightable background={'yellow'}>{(this.props.data.bytesrecv /1024 /1024).toFixed(2)}</Highlightable> MB, </span><br/>
                     <span>timeoffset: {this.props.data.timeoffset}, </span><br/>
                     <span>banscore: {this.props.data.banscore}, </span><br/>
-                    <span>startingheight {this.props.data.startingheight}, </span><br/>
-                    <span>synced_headers: {this.props.data.synced_headers}, </span><br/>
-                    <span>synced_blocks: {this.props.data.synced_blocks} </span><br/>
-                    <span>inflight: {this.props.data.inflight.toString()} </span><br/>
-                    <span>whitelisted: {this.props.data.whitelisted.toString()} </span><br/>
+                    {/* // <span>startingheight {this.props.data.startingheight}, </span><br/>
+                    // <span>synced_headers: {this.props.data.synced_headers}, </span><br/>
+                    // <span>synced_blocks: {this.props.data.synced_blocks} </span><br/>
+                    // <span>inflight: {this.props.data.inflight.toString()} </span><br/>
+                    // <span>whitelisted: {this.props.data.whitelisted.toString()} </span><br/> */}
+                    <span>kb/s in: {this.state.kbpsIn} </span><br/>
+                    <span>kb/s out: {this.state.kbpsOut} </span><br/>
                     <span>connected {moment(this.props.data.conntime * 1000).fromNow()} </span><br/>
 
                 </div>
@@ -111,17 +118,17 @@ export default class Node extends React.Component {
     );
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //
-  //   if (this.props.data) {
-  //     var kbpsIn = ((nextProps.data.bytesrecv - this.props.data.bytesrecv) /1024 /3);
-  //     console.log('kbpsIn:',kbpsIn.toFixed(2));
-  //     var kbpsOut = (nextProps.data.bytessent - this.props.data.bytessent) /1024 /3;
-  //     console.log('kbpsOut:',kbpsOut.toFixed(2));
-  //     this.setState({
-  //       kbpsIn: kbpsIn, kbpsOut: kbpsOut
-  //     });
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+
+    if (this.props.data) {
+      var kbpsIn = ((nextProps.data.bytesrecv - this.props.data.bytesrecv) /1024 /3);
+      // console.log('kbpsIn:',kbpsIn.toFixed(2));
+      var kbpsOut = ((nextProps.data.bytessent - this.props.data.bytessent) /1024 /3);
+      // console.log('kbpsOut:',kbpsOut.toFixed(2));
+      this.setState({
+        kbpsIn: kbpsIn.toFixed(2), kbpsOut: kbpsOut.toFixed(2)
+      });
+    }
+  }
 
 }

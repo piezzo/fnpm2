@@ -11,9 +11,9 @@ export default class NetworkSpeeds extends React.Component {
             Speeds: in: {this.state.kbpsIn.toFixed(2)} kbps out: {this.state.kbpsOut.toFixed(2)} kbps
           </div>
           <div>
-            onion: <span className="onion">{this.state.onionKbpsIn} / {this.state.onionKbpsOut}</span>,
-            ipv6: <span className="ipv6">{this.state.ipv6KbpsIn} / {this.state.ipv6KbpsOut}</span>,
-            ipv4: <span className="ipv4">{this.state.ipv4KbpsIn} / {this.state.ipv4KbpsOut}</span>
+            onion: <span className="colored onion">{this.state.onionKbpsIn} / {this.state.onionKbpsOut}</span>,
+            ipv6: <span className="colored ipv6">{this.state.ipv6KbpsIn} / {this.state.ipv6KbpsOut}</span>,
+            ipv4: <span className="colored ipv4">{this.state.ipv4KbpsIn} / {this.state.ipv4KbpsOut}</span>
           </div>
         </div>
     );
@@ -55,7 +55,7 @@ export default class NetworkSpeeds extends React.Component {
           ipv4.out = ipv4.out + peer.bytessent;
         }
       });
-      if (this.state.ipv4) {
+      if (this.state) {
         var onionKbpsIn = ((onion.in - this.state.onion.in) /1024 /3).toFixed(2);
         this.setState({ onionKbpsIn: onionKbpsIn});
         var onionKbpsOut = ((onion.out - this.state.onion.out) /1024 /3).toFixed(2);
