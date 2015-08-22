@@ -89,10 +89,18 @@ export default class Node extends React.Component {
           <CardText expandable={true}>
             <div className="container">
                 <div className="child">
-                    {this.props.data.subver}, <b>{this.props.data.addr}</b>,
-                    sent: <Highlightable background={'yellow'}>{(this.props.data.bytessent /1024 /1024).toFixed(2)}</Highlightable> MB,
-                    received: <Highlightable background={'yellow'}>{(this.props.data.bytesrecv /1024 /1024).toFixed(2)}</Highlightable> MB,
-                    connected {moment(this.props.data.conntime * 1000).fromNow()}
+                    <span>{this.props.data.subver}, </span>
+                    <span><b>{this.props.data.addr}</b>, </span><br/>
+                    <span>sent: <Highlightable background={'yellow'}>{(this.props.data.bytessent /1024 /1024).toFixed(2)}</Highlightable> MB, </span><br/>
+                    <span>received: <Highlightable background={'yellow'}>{(this.props.data.bytesrecv /1024 /1024).toFixed(2)}</Highlightable> MB, </span><br/>
+                    <span>timeoffset: {this.props.data.timeoffset}, </span><br/>
+                    <span>banscore: {this.props.data.banscore}, </span><br/>
+                    <span>startingheight {this.props.data.startingheight}, </span><br/>
+                    <span>synced_headers: {this.props.data.synced_headers}, </span><br/>
+                    <span>synced_blocks: {this.props.data.synced_blocks} </span><br/>
+                    <span>inflight: {this.props.data.inflight.toString()} </span><br/>
+                    <span>whitelisted: {this.props.data.whitelisted.toString()} </span><br/>
+
                 </div>
               <Chart className="child" data={trafficData} ringSize={ringSize}/>
           </div>
