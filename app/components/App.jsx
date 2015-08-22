@@ -2,10 +2,25 @@ import React from 'react';
 import Peers from './Peers';
 import JQuery from 'jquery';
 
+import mui from 'material-ui';
+  let ThemeManager = new mui.Styles.ThemeManager();
+  let RaisedButton = mui.RaisedButton;
+  let AppBar = mui.AppBar;
+  let Papaer = mui.Paper;
+
 var $ = require('jquery');
 
 
 var Fnpm = React.createClass({
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext: function() {
+    return {
+      muiTheme: ThemeManager.getCurrentTheme()
+    };
+  },
 
   getInitialState: function() {
     return {data: []};
@@ -31,10 +46,14 @@ var Fnpm = React.createClass({
   render: function() {
     return (
       <div className="fnmp">
-        <h1>fnpm2 peer viewer</h1>
+        <header>
+        <AppBar
+  title="fnpm2"
+  iconClassNameRight="muidocs-icon-navigation-expand-more"/>
+</header>
         <Peers peers={this.state.data}/>
       </div>
     );
   },
 });
-React.render(<Fnpm url="/getpeerinfo" pollInterval={5000} />, document.body);
+React.render(<Fnpm url="http://piezzo.no-ip.org:3000/getpeerinfo" pollInterval={5000} />, document.body);
