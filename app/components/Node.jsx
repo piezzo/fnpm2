@@ -100,6 +100,7 @@ export default class Node extends React.Component {
                     <span>synced_blocks: {this.props.data.synced_blocks} </span><br/>
                     <span>inflight: {this.props.data.inflight.toString()} </span><br/>
                     <span>whitelisted: {this.props.data.whitelisted.toString()} </span><br/>
+                    <span>connected {moment(this.props.data.conntime * 1000).fromNow()} </span><br/>
 
                 </div>
               <Chart className="child" data={trafficData} ringSize={ringSize}/>
