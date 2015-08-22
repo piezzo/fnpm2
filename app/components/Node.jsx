@@ -23,8 +23,7 @@ import mui from 'material-ui';
 export default class Node extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {kbpsIn: 0};
-    this.state = {kbpsOut: 0};
+    this.state = {kbpsIn: 0, kbpsOut: 0};
   }
 
   render() {
@@ -105,8 +104,8 @@ export default class Node extends React.Component {
                     // <span>synced_blocks: {this.props.data.synced_blocks} </span><br/>
                     // <span>inflight: {this.props.data.inflight.toString()} </span><br/>
                     // <span>whitelisted: {this.props.data.whitelisted.toString()} </span><br/> */}
-                    <span>kb/s in: {this.state.kbpsIn} </span><br/>
-                    <span>kb/s out: {this.state.kbpsOut} </span><br/>
+                    <span>kB/s in: {this.state.kbpsIn} </span><br/>
+                    <span>kB/s out: {this.state.kbpsOut} </span><br/>
                     <span>connected {moment(this.props.data.conntime * 1000).fromNow()} </span><br/>
 
                 </div>
