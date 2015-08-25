@@ -4,9 +4,25 @@ import JQuery from 'jquery';
 
 import mui from 'material-ui';
   let ThemeManager = new mui.Styles.ThemeManager();
+  // require ('../stylesheets/muiTheme');
+  ThemeManager.setTheme(ThemeManager.types.LIGHT);
+
   let RaisedButton = mui.RaisedButton;
   let AppBar = mui.AppBar;
   let Papaer = mui.Paper;
+
+let appPalette = {
+primary1Color: "#FFF479",
+primary2Color: "#8678DE",
+primary3Color: "#CC69DA",
+accent1Color: "#FFF045",
+accent2Color: "#CAC2F8",
+accent3Color: "#F0BBF7"
+
+// rest of the palette is set from Theme Manager
+// colors from http://paletton.com/#uid=41G0o0kgONn00++7WXYniwVs6hg
+};
+ThemeManager.setPalette(appPalette);
 
 var $ = require('jquery');
 
@@ -57,3 +73,4 @@ var Fnpm = React.createClass({
   },
 });
 React.render(<Fnpm url="http://piezzo.no-ip.org:3000/getpeerinfo" pollInterval={5000} />, document.body);
+React.render(<Fnpm url="http://shuttle:3000/getpeerinfo" pollInterval={5000} />, document.body);
