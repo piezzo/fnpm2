@@ -31,14 +31,14 @@ export default class Node extends React.Component {
     var trafficData = [
       {
         value: Math.max((this.props.data.bytessent / 1024 / 1024).toFixed(2), 0.01),
-        color:"#603C92",
-        highlight: "#47207E",
+        color:"#CC69DA",
+        highlight: "#F0BBF7",
         label: "MB sent"
       },
       {
         value: Math.max((this.props.data.bytesrecv / 1024 / 1024).toFixed(2), 0.01),
-        color: "#F6D496",
-        highlight: "#FFDB9A",
+        color: "#8678DE",
+        highlight: "#CAC2F8",
         label: "MB received"
       }
     ];
@@ -96,8 +96,8 @@ export default class Node extends React.Component {
                   <span>Id: {this.props.data.id} </span><br/>
                     <span>{this.props.data.subver} </span><br/>
                     <span><b>{this.props.data.addr}</b> </span><br/>
-                    <span>sent: <Highlightable background={'yellow'}>{(this.props.data.bytessent /1024 /1024).toFixed(2)}</Highlightable> MB </span><br/>
                     <span>received: <Highlightable background={'yellow'}>{(this.props.data.bytesrecv /1024 /1024).toFixed(2)}</Highlightable> MB </span><br/>
+                    <span>sent: <Highlightable background={'yellow'}>{(this.props.data.bytessent /1024 /1024).toFixed(2)}</Highlightable> MB </span><br/>
                     <span>timeoffset: {this.props.data.timeoffset} </span><br/>
                     <span>banscore: {this.props.data.banscore} </span><br/>
                     {/* // <span>startingheight {this.props.data.startingheight}, </span><br/>
