@@ -9,7 +9,7 @@ export default class PeersSummary extends React.Component {
     if (this.props.data && this.props.nettotals) {
     return(
       <div className="PeersSummaryDetails">
-        <h3>Connected to
+        <h3>Connected to 
           <Highlightable background={'yellow'}>{this.props.data.length}
           </Highlightable> peers --- in:
           <Highlightable background={'yellow'}>{(this.props.nettotals.totalbytesrecv /1024 /1024 /1024).toFixed(2)}

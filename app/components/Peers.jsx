@@ -10,7 +10,7 @@ export default class Peers extends React.Component {
     if (this.props.peers.data) {
       var nodes = this.props.peers.data.map(function (node, i) {
         return (
-          <Node key={'node' + i} data={node} maxTransferred={maxTransferred}>
+          <Node key={'node_' + node.id} data={node} maxTransferred={maxTransferred}>
             {node.addr}
           </Node>
         );
