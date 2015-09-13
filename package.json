@@ -23,6 +23,7 @@
     "webpack-merge": "^0.1.2"
   },
   "dependencies": {
+    "apicache": "0.0.12",
     "bitcoin": "^2.4.0",
     "body-parser": "^1.13.2",
     "chart.js": "^1.0.2",

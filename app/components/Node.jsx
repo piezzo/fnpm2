@@ -55,6 +55,14 @@ export default class Node extends React.Component {
       subtitleString += " ipv6";
       avatarColor = 'orange';
       avatarString = 'v6';
+      // Dirty hack to shorten ipv6-adresses
+      var addr;
+      if (this.props.data.addr.length > 30) {
+        addr = this.props.data.addr.slice(0,30) + "...";
+      } else {
+        addr = this.props.data.addr;
+      }
+
     } else
     if ((this.props.data.addr.indexOf('.onion') > -1) || (this.props.data.addrlocal.indexOf('.onion') > -1)) {
       classString += " onion";
@@ -85,9 +93,9 @@ export default class Node extends React.Component {
       <div className={classString}>
         <Card initiallyExpanded={false}>
           <CardHeader
-            title={this.props.data.addr}
+            title={addr || this.props.data.addr}
             subtitle={subtitleString}
-            avatar={<Avatar style={{color:{avatarColor}}}>{avatarString}</Avatar>}
+            avatar={<Avatar style={{color:avatarColor}}>{avatarString}</Avatar>}
             showExpandableButton={true}>
           </CardHeader>
           <CardText expandable={true}>
