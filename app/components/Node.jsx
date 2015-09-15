@@ -45,7 +45,7 @@ export default class Node extends React.Component {
 
     var ringSize = - Math.round(Math.min(0.25, (this.props.data.bytesrecv +this.props.data.bytessent) / this.props.maxTransferred) * 100) +95;
 
-    var subtitleString = this.props.data.subver;
+    var subtitleString = this.props.data.subver.slice(0, 20);
     var avatarColor = 'black';
     var avatarString = '--';
 
