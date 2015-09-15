@@ -35,5 +35,5 @@ function main() {
     var app = document.createElement('div');
     document.body.appendChild(app);
 
-    React.render(<App />, app);
+    React.render(<App />, document.body);
 }

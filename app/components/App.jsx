@@ -27,27 +27,32 @@ ThemeManager.setPalette(appPalette);
 var $ = require('jquery');
 
 
-var Fnpm = React.createClass({
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
+export default class App extends React.Component {
+  constructor() {
+    super();
 
-  getChildContext: function() {
+    this.state = {data: [], pollInterval: 3000};
+    this.loadPeersFromServer = this.loadPeersFromServer.bind(this);
+    // this._handleClick = this._handleClick.bind(this);
+    // this._getSelectedIndex = this._getSelectedIndex.bind(this);
+    // this._onLeftNavChange = this._onLeftNavChange.bind(this);
+  }
+
+
+  getChildContext() {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
     };
-  },
+  }
 
-  getInitialState: function() {
-    return {data: []};
-  },
-  componentDidMount: function() {
+  componentDidMount() {
     this.loadPeersFromServer();
-    setInterval(this.loadPeersFromServer, this.props.pollInterval);
-  },
-  loadPeersFromServer: function() {
+    setInterval(this.loadPeersFromServer, this.state.pollInterval);
+  }
+
+  loadPeersFromServer() {
     $.ajax({
-      url: this.props.url,
+      url: "http://shuttle:3000/getpeerinfo",
       dataType: 'json',
       cache: true,
       success: function(data) {
@@ -58,8 +63,9 @@ var Fnpm = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
-  },
-  render: function() {
+  }
+
+  render() {
     return (
       <div className="fnmp">
         <header>
@@ -70,6 +76,14 @@ var Fnpm = React.createClass({
         <Peers peers={this.state.data}/>
       </div>
     );
-  },
-});
-React.render(<Fnpm url="/getpeerinfo" pollInterval={3000} />, document.body);
+  }
+};
+
+App.childContextTypes = {
+  muiTheme: React.PropTypes.object
+};
+
+App.contextTypes = {
+  router: React.PropTypes.func
+};
+// React.render(<Fnpm url="/getpeerinfo" pollInterval={3000} />, document.body);
