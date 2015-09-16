@@ -1,6 +1,6 @@
 import React from 'react';
-import Peers from './Peers';
-import JQuery from 'jquery';
+import { RouteHandler } from 'react-router';
+// import Peers from './Peers';
 
 import mui from 'material-ui';
   let ThemeManager = new mui.Styles.ThemeManager();
@@ -10,6 +10,8 @@ import mui from 'material-ui';
   let RaisedButton = mui.RaisedButton;
   let AppBar = mui.AppBar;
   let Papaer = mui.Paper;
+  let MenuItem = mui.MenuItem;
+  let LeftNav = mui.LeftNav;
 
 let appPalette = {
 primary1Color: "#FFF479",
@@ -24,20 +26,64 @@ accent3Color: "#F0BBF7"
 };
 ThemeManager.setPalette(appPalette);
 
-var $ = require('jquery');
+let menuItems = [
+  { route: '/', text: 'Home' },
+  { route: 'peers', text: 'Peers' },
+  { route: 'about', text: 'About' },
+  { route: 'contact', text: 'Contact' },
+  { type: MenuItem.Types.SUBHEADER, text: 'Resources' },
+  {
+     type: MenuItem.Types.LINK,
+     payload: 'https://github.com/piezzo/fnpm2',
+     text: 'GitHub'
+  },
+  // {
+  //    text: 'Disabled',
+  //    disabled: true
+  // },
+  // {
+  //    type: MenuItem.Types.LINK,
+  //    payload: 'https://www.google.com',
+  //    text: 'Disabled Link',
+  //    disabled: true
+  // },
+];
+
+// var $ = require('jquery');
 
 
 export default class App extends React.Component {
   constructor() {
     super();
 
-    this.state = {data: [], pollInterval: 3000};
-    this.loadPeersFromServer = this.loadPeersFromServer.bind(this);
-    // this._handleClick = this._handleClick.bind(this);
-    // this._getSelectedIndex = this._getSelectedIndex.bind(this);
-    // this._onLeftNavChange = this._onLeftNavChange.bind(this);
+    this._handleClick = this._handleClick.bind(this);
+    this._getSelectedIndex = this._getSelectedIndex.bind(this);
+    this._onLeftNavChange = this._onLeftNavChange.bind(this);
   }
 
+  _handleClick(e) {
+    e.preventDefault();
+
+    // Show/Hide the LeftMenu
+    this.refs.leftNav.toggle();
+  }
+
+  // Get the selected item in LeftMenu
+  _getSelectedIndex() {
+    let currentItem;
+
+    for (let i = menuItems.length - 1; i >= 0; i--) {
+      currentItem = menuItems[i];
+      if (currentItem.route && this.context.router.isActive(currentItem.route)) {
+        return i;
+      }
+    }
+  }
+
+  _onLeftNavChange(e, key, payload) {
+    // Do DOM Diff refresh
+    this.context.router.transitionTo(payload.route);
+  }
 
   getChildContext() {
     return {
@@ -45,39 +91,26 @@ export default class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.loadPeersFromServer();
-    setInterval(this.loadPeersFromServer, this.state.pollInterval);
-  }
-
-  loadPeersFromServer() {
-    $.ajax({
-      url: "http://shuttle:3000/getpeerinfo",
-      dataType: 'json',
-      cache: true,
-      success: function(data) {
-        // console.log("successful xmlhttprequest.");
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  }
-
   render() {
     return (
       <div className="fnmp">
         <header>
-        <AppBar
-  title="fnpm2"
-  iconClassNameRight="muidocs-icon-navigation-expand-more"/>
-</header>
-        <Peers peers={this.state.data}/>
+        <AppBar title="fnpm2" onLeftIconButtonTouchTap={this._handleClick}/>
+        </header>
+        <LeftNav
+          ref="leftNav"
+          docked={false}
+          menuItems={menuItems}
+          selectedIndex={this._getSelectedIndex()}
+          onChange={this._onLeftNavChange} />
+          <section className="content">
+            <RouteHandler />
+          </section>
       </div>
     );
   }
 };
+//         <Peers peers={this.state.data}/>
 
 App.childContextTypes = {
   muiTheme: React.PropTypes.object

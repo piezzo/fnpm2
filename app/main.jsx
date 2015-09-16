@@ -1,4 +1,23 @@
 import './stylesheets/main.css';
+import 'core-js/fn/array/find-index';
+
+import React from 'react';
+import App from './components/App';
+import Router, { Route, DefaultRoute, NotFoundRoute, Redirect, Link } from 'react-router';
+
+import Home from './components/Home';
+import Peers from './components/Peers';
+import About from './components/About';
+import Contact from './components/Contact';
+// initialize routes
+const AppRoutes = (
+  <Route path="/" handler={App}>
+    <DefaultRoute handler={Home} />
+    <Route name="peers" handler={Peers} />
+    <Route name="about" handler={About} />
+    <Route name="contact" handler={Contact} />
+  </Route>
+);
 
 //Material UI
 
@@ -24,16 +43,18 @@ let WebFontConfig = {
   })();
 
 
-import React from 'react';
 
+// import App from './components/App';
+//
+// main();
+//
+// function main() {
+//     var app = document.createElement('div');
+//     document.body.appendChild(app);
+//
+//     React.render(<App />, document.body);
+// }
 
-import App from './components/App';
-
-main();
-
-function main() {
-    var app = document.createElement('div');
-    document.body.appendChild(app);
-
-    React.render(<App />, document.body);
-}
+Router.run(AppRoutes, Router.HashLocation, (Root) => {
+  React.render(<Root />, document.body);
+});
