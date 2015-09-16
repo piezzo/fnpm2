@@ -14,7 +14,12 @@ export default class Peers extends React.Component {
   }
 
   componentDidMount() {
-    setInterval(this.loadPeersFromServer, this.state.pollInterval);
+    this.timer = setInterval(this.loadPeersFromServer, this.state.pollInterval);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    // console.log('timer cleared...');
   }
 
   loadPeersFromServer() {
