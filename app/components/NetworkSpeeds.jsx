@@ -2,6 +2,9 @@ import React from 'react';
 // import Highlightable from 'react-highlightable';
 
 export default class NetworkSpeeds extends React.Component {
+  constructor() {
+    super();
+  }
 
   render() {
     if (this.state) {

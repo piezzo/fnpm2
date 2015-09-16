@@ -4,7 +4,6 @@ import Chart from './Chart';
 import Highlightable from 'react-highlightable';
 import mui from 'material-ui';
   // let ThemeManager = new mui.Styles.ThemeManager();
-  let RaisedButton = mui.RaisedButton;
   let Paper = mui.Paper;
   let Card = mui.Card;
   let CardHeader = mui.CardHeader;
@@ -21,8 +20,9 @@ import mui from 'material-ui';
       // }
 
 export default class Node extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
     this.state = {kbpsIn: 0, kbpsOut: 0};
   }
 
@@ -44,6 +44,7 @@ export default class Node extends React.Component {
     ];
 
     var ringSize = - Math.round(Math.min(0.25, (this.props.data.bytesrecv +this.props.data.bytessent) / this.props.maxTransferred) * 100) +95;
+    // console.log('ringSize:',ringSize);
 
     var subtitleString = this.props.data.subver.slice(0, 20);
     var avatarColor = 'black';
@@ -128,15 +129,14 @@ export default class Node extends React.Component {
 
   componentWillReceiveProps(nextProps) {
 
-    if (this.props.data) {
       var kbpsIn = ((nextProps.data.bytesrecv - this.props.data.bytesrecv) /1024 /3);
-      // console.log('kbpsIn:',kbpsIn.toFixed(2));
+      // console.log('id:', this.props.data.id, 'kbpsIn:',kbpsIn.toFixed(2));
       var kbpsOut = ((nextProps.data.bytessent - this.props.data.bytessent) /1024 /3);
       // console.log('kbpsOut:',kbpsOut.toFixed(2));
       this.setState({
         kbpsIn: kbpsIn.toFixed(2), kbpsOut: kbpsOut.toFixed(2)
       });
-    }
+
   }
 
 }

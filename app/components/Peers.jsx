@@ -10,12 +10,10 @@ export default class Peers extends React.Component {
 
     this.state = {data: [], pollInterval: 3000};
     this.loadPeersFromServer = this.loadPeersFromServer.bind(this);
-    // this.loadPeersFromServer();
-    // this.loadPeersFromServer = this.loadPeersFromServer.bind(this);
+    this.loadPeersFromServer();
   }
 
   componentDidMount() {
-    this.loadPeersFromServer();
     setInterval(this.loadPeersFromServer, this.state.pollInterval);
   }
 
@@ -25,8 +23,8 @@ export default class Peers extends React.Component {
       dataType: 'json',
       cache: true,
       success: function(data) {
-        console.log("successful xmlhttprequest.");
-        this.setState({data: data.data});
+        // console.log("successful xmlhttprequest.");
+        this.setState({data: data.data, nettotals: data.nettotals, maxTransferred: data.maxTransferred});
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -52,7 +50,7 @@ export default class Peers extends React.Component {
           {nodes}
         </div>
       </ul>
-      <PeersSummary data={this.state.data} nettotals={this.state.data.nettotals} />
+      <PeersSummary data={this.state.data} nettotals={this.state.nettotals} />
     </div>
   );
 }
