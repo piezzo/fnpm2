@@ -49,8 +49,9 @@ export default class Node extends React.Component {
     var subtitleString = this.props.data.subver.slice(0, 20);
     var avatarColor = 'black';
     var avatarString = '--';
-
     var classString = "Node";
+    var locationData;
+
     if (this.props.data.addr.indexOf('[') > -1) {
       classString += " ipv6";
       subtitleString += " ipv6";
@@ -90,6 +91,14 @@ export default class Node extends React.Component {
     subtitleString += " " + this.state.kbpsIn + "/" + this.state.kbpsOut;
     // subtitleString = "<div class=\'right\'>" + subtitleString+ "</div>";
 
+    if (this.props.data.geo) {
+      if (this.props.data.geo.city){
+        locationData = (<td>Location: {this.props.data.geo.city}, {this.props.data.geo.country} </td>);
+      } else {
+        locationData = (<td>Location: {this.props.data.geo.country} </td>);
+      }
+    }
+
     return(
       <div className={classString}>
         <Card initiallyExpanded={false}>
@@ -116,8 +125,8 @@ export default class Node extends React.Component {
                     // <span>whitelisted: {this.props.data.whitelisted.toString()} </span><br/> */}
                     <span>kB/s in: {this.state.kbpsIn} </span><br/>
                     <span>kB/s out: {this.state.kbpsOut} </span><br/>
+                    {locationData}
                     <span>connected {moment(this.props.data.conntime * 1000).fromNow()} </span><br/>
-
                 </div>
               <Chart className="child" data={trafficData} ringSize={ringSize}/>
           </div>
