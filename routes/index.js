@@ -21,7 +21,7 @@ router.all('/', function(req, res, next) {
 
 
 
-router.get('/getpeerinfo', apicache('3 seconds'), function(req, res, next) {
+router.get('/getpeerinfo', apicache('2 seconds'), function(req, res, next) {
 	switch (serverType) {
 		case 'btcd':
 			btcd.getpeerinfo(function(err, info, resHeaders) {

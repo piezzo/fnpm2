@@ -1,5 +1,5 @@
 import './stylesheets/main.css';
-import 'core-js/fn/array/find-index';
+// import 'core-js/fn/array/find-index';
 
 import React from 'react';
 import App from './components/App';
