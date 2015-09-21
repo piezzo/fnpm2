@@ -8,7 +8,7 @@ export default class Peers extends React.Component {
   constructor() {
     super();
 
-    this.state = {data: [], pollInterval: 3000};
+    this.state = {data: [], pollInterval: 5000};
     this.loadPeersFromServer = this.loadPeersFromServer.bind(this);
     this.loadPeersFromServer();
   }
@@ -24,7 +24,7 @@ export default class Peers extends React.Component {
 
   loadPeersFromServer() {
     $.ajax({
-      url: "http://shuttle:3000/getpeerinfo",
+      url: "/getpeerinfo",
       dataType: 'json',
       cache: true,
       success: function(data) {

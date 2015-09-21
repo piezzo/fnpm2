@@ -6,6 +6,8 @@ var serverType = 'bitcoind';
 var rpcConfig = config.get('rpcConfig');
 var colors = config.get('colors');
 var apicache = require('apicache').options({ debug: true }).middleware;
+var geoip = require('geoip-lite');
+
 
 
 
@@ -31,6 +33,8 @@ router.get('/getpeerinfo', apicache('3 seconds'), function(req, res, next) {
 					var maxTransferred = 0;
 					for (var i = 0; i < info.length; i++){
 						maxTransferred = Math.max(maxTransferred, (info[i].bytessent + info[i].bytesrecv));
+						// var geo = geoip.lookup(info[i].addr.match(/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/g));
+						// console.log("Geo:", geo);
 					};
 					res.header("Access-Control-Allow-Origin", "*");
 					res.json({
@@ -50,6 +54,10 @@ router.get('/getpeerinfo', apicache('3 seconds'), function(req, res, next) {
 					var maxTransferred = 0;
 					for (var i = 0; i < info.length; i++){
 						maxTransferred = Math.max(maxTransferred, (info[i].bytessent + info[i].bytesrecv));
+
+						info[i].geo = getGeo(info[i].addr);
+						// console.log("Geo:", info[i].geo);
+
 					};
 					res.header("Access-Control-Allow-Origin", "*");
 					res.json({
@@ -82,6 +90,20 @@ router.get('/getpeerinfo', apicache('3 seconds'), function(req, res, next) {
 	});
 	}
 });
+
+function getGeo(address) {
+	var rawip = address.match(/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/g);
+	var ip;
+	if (rawip) {
+		ip = rawip.toString();
+	} else {
+		ip = "0.0.0.0";
+	}
+	// console.log("ip:", ip);
+	var geo = geoip.lookup(ip);
+	// console.log("Geo:", info[i].geo);
+	return geo;
+}
 
 
 module.exports = router;
