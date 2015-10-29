@@ -2,7 +2,7 @@
   "name": "fnpm2",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "TARGET=build webpack",
@@ -38,8 +38,11 @@
     "morgan": "^1.6.1",
     "react": "^0.13.3",
     "react-chartjs": "^0.6.0",
+    "react-google-maps": "^2.1.0",
+    "react-googlemaps": "^0.4.0",
     "react-highlightable": "0.0.2",
     "react-router": "^0.13.3",
-    "react-tap-event-plugin": "^0.1.7"
+    "react-tap-event-plugin": "^0.1.7",
+    "reactify": "^1.1.1"
   }
 }

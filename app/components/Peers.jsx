@@ -24,7 +24,7 @@ export default class Peers extends React.Component {
 
   loadPeersFromServer() {
     $.ajax({
-      url: "/getpeerinfo",
+      url: "http://shuttle:3000/getpeerinfo",
       dataType: 'json',
       cache: true,
       success: function(data) {

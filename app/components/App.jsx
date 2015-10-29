@@ -95,6 +95,7 @@ export default class App extends React.Component {
     return (
       <div className="fnmp">
         <header>
+          <script src="https://maps.googleapis.com/maps/api/js"></script>
         <AppBar title="fnpm2" onLeftIconButtonTouchTap={this._handleClick}/>
         </header>
         <LeftNav

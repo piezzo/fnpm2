@@ -1,4 +1,4 @@
-var compression = require('compression')
+var compression = require('compression');
 var express = require('express');
 var path = require('path');
 // var favicon = require('serve-favicon');
@@ -63,6 +63,9 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+// this is not a browser. (Webpack debug)
+delete process.env.BROWSER;
 
 // error handlers
 

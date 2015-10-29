@@ -1,5 +1,4 @@
 import './stylesheets/main.css';
-// import 'core-js/fn/array/find-index';
 
 import React from 'react';
 import App from './components/App';
@@ -12,7 +11,7 @@ import Contact from './components/Contact';
 // initialize routes
 const AppRoutes = (
   <Route path="/" handler={App}>
-    <DefaultRoute handler={Home} />
+    <DefaultRoute  handler={Home} />
     <Route name="peers" handler={Peers} />
     <Route name="about" handler={About} />
     <Route name="contact" handler={Contact} />
@@ -42,11 +41,39 @@ let WebFontConfig = {
     s.parentNode.insertBefore(wf, s);
   })();
 
+  let loadGoogleApi =
 
+    (function(initialize) {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+        '://maps.googleapis.com/maps/api/js?v=3&sensor=false';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+      console.log('got script!');
+      // initialize();
+    })();
 
-// import App from './components/App';
+  var $ = require('jquery');
+//  var google = $.getScript('https://maps.googleapis.com/maps/api/js?v=3&sensor=false', initialize())();
+$.getScript('https://maps.googleapis.com/maps/api/js?v=3&sensor=false&callback=google');
 //
-// main();
+//
+var initialize = function() {
+
+    console.log('maps-API has been loaded, ready to use');
+    var mapOptions = {
+          zoom: 8,
+          center: new google.maps.LatLng(-34.397, 150.644),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new window.google.maps.Map(document.getElementById('map_canvas'),
+            mapOptions);
+  }
+// // import App from './components/App';
+// //
+// // main();
 //
 // function main() {
 //     var app = document.createElement('div');
