@@ -7,7 +7,7 @@ This is a small side project, that is meant to teach me some React. Feel free to
 
 If you're lucky, you might see a running version here: http://piezzo.no-ip.org:3000/ (initial load takes a while due to crappy upstream-connection)
 
-14GGWaf2kigQffYKTDR1EiuD3Q1S6h6coU
+1DJwPgDZqN6TK9DQTWQepmtGz1dYXYsTsf
 
 Quickstart
 ----------
